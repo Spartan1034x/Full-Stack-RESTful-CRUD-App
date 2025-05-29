@@ -1,0 +1,12 @@
+#URL mapping for REST API Demo
+#Note: "NC" means case insensitive
+RewriteEngine on
+
+RewriteRule ^MyApp/entities$ api/dbService.php [NC]
+RewriteRule ^MyApp/entities/([0-9]{1,3})$ api/dbService.php?db_id=$1 [NC]
+
+#([0-9]{1,3}) - Captures a sequence of 1 to 3 digits (0-9) using a capturing group (()).
+
+#Rewrites the matched URL to api/dbService.php and appends a query parameter db_id with the 
+# value of the captured digits ($1 refers to the first capturing group from the pattern, which 
+#   is the digits in ([0-9]{1,3})), e.g., /MyApp/entities/123 rewrites to /api/dbService.php?db_id=123.
